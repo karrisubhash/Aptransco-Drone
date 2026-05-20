@@ -1,0 +1,6 @@
+train: ../train/images
+
+nc: 2
+
+names:
+  0: missing_bolt

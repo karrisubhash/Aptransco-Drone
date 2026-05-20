@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: 0:rust
+
+roboflow:
+  workspace: subhash-karri
+  project: power-tower-corrosion-lgry2-jo7ca
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/subhash-karri/power-tower-corrosion-lgry2-jo7ca/dataset/1

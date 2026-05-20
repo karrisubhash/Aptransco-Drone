@@ -1,0 +1,13 @@
+path: datasets/transmission_defects
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 4
+
+names:
+  0: broken_insulator
+  1: rust
+  2: missing_bolt
+  3: loose_bolt
