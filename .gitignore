@@ -1,7 +1,31 @@
-venv/
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+venv/
+
+# Django
 db.sqlite3
-.env
 media/
+
+# AI Models
 *.pt
+*.onnx
+*.engine
+
+# YOLO Training
+runs/
+
+# Datasets
+datasets/
+raw_dataset/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment
+.env
