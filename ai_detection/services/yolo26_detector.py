@@ -3,7 +3,7 @@ import cv2
 import os
 
 
-MODEL = YOLO("runs/detect/train-3/weights/best.pt")
+MODEL = YOLO(os.environ.get("YOLO_WEIGHTS", "runs/detect/train-3/weights/best.pt"))
 def run_detection(image_path):
 
     results = MODEL(image_path)
