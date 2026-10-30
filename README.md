@@ -10,7 +10,7 @@
 
 | | |
 |---|---|
-| **Production system** | **[drone.aptransco.in](https://drone.aptransco.in/)**: adopted by APTRANSCO and running on its production servers. |
+| **Production system** | **[drone.aptransco.co.in](https://drone.aptransco.co.in/)**: adopted by APTRANSCO and running on its production servers (staff sign-in required). |
 | **This repository** | The **early backend and training-data pipeline** (May 2026) that the production system grew out of. The production code base and the trained weights belong to APTRANSCO and are not published here. |
 | **Team** | Built by a team of 3 engineers at the APTRANSCO IT Wing. My part: training the custom YOLO detection models and building the modular DRF inference pipelines. |
 
