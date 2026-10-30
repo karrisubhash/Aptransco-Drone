@@ -27,7 +27,6 @@ APTRANSCO maintains thousands of kilometres of high-voltage lines. Linemen inspe
 - **Asset data model** for `Tower`, `Inspection`, `Defect` (severity Low → Critical) and `Prediction` (failure risk and probability), stored in PostgreSQL.
 - **Label-cleaning scripts** that merge and remap classes across datasets before training (for example, dropping `tower_main_body` and folding `severe_corrosion` into `rust`).
 
-Results reported for the production models: **92% mAP** across multiple defect categories, and **~40% lower end-to-end processing latency** after the inference path was moved into modular DRF pipelines.
 
 ## Architecture
 
@@ -136,11 +135,6 @@ curl -F "image=@tower_0042.jpg" http://127.0.0.1:8000/api/ai/detect/
    ```
 4. Copy `runs/detect/<run>/weights/best.pt` to the path in `YOLO_WEIGHTS`.
 
-## Screenshots
-
-<!-- TODO(Subhash): add 2–3 images that APTRANSCO has cleared for publication, e.g.
-![Detection result](docs/images/detection.jpg)
-![Dashboard](docs/images/dashboard.png) -->
 
 ## Testing
 
@@ -154,9 +148,8 @@ Not covered yet: there are no automated tests in this snapshot. See *Future impr
 
 - Load the model lazily so the app starts without weights.
 - Persist every detection as `Inspection` / `Defect` rows instead of returning JSON only.
-- Add API tests with a tiny fixture model, plus an evaluation script that reports mAP@0.5 and mAP@0.5:0.95 per class.
+- Add API tests with a tiny fixture model.
 - Move inference to a Celery worker so large survey batches don't block the request cycle.
-- Publish a model card (dataset size, classes, metrics, known failure modes).
 
 ## Acknowledgements
 
