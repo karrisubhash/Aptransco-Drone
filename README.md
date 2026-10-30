@@ -83,19 +83,18 @@ cd Aptransco-Drone
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-# edit DATABASES in backend/settings.py (or apply the env-var change below)
+cp .env.example .env          # set DB credentials and a secret key
 createdb aptransco_ai_db
 python manage.py migrate
 mkdir -p media/uploads media/results
 
-# Place trained weights at the path the service expects (weights are not distributed):
-#   runs/detect/train-3/weights/best.pt
+# Point YOLO_WEIGHTS in .env at your trained weights (weights are not distributed)
 python manage.py runserver
 ```
 
 ### Environment variables
 
-> Planned: the current snapshot still hard-codes the DB settings and the weights path in `backend/settings.py` and `ai_detection/services/yolo26_detector.py`. Moving them to these variables is the first item under *Future improvements*.
+Settings are read from `.env` (loaded with python-dotenv); see [`.env.example`](.env.example).
 
 | Variable | Purpose |
 |---|---|
@@ -153,7 +152,7 @@ Not covered yet: there are no automated tests in this snapshot. See *Future impr
 
 ## Future improvements
 
-- Read the secret key, DB settings and weights path from environment variables, and load the model lazily so the app starts without weights.
+- Load the model lazily so the app starts without weights.
 - Persist every detection as `Inspection` / `Defect` rows instead of returning JSON only.
 - Add API tests with a tiny fixture model, plus an evaluation script that reports mAP@0.5 and mAP@0.5:0.95 per class.
 - Move inference to a Celery worker so large survey batches don't block the request cycle.
